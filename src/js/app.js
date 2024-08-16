@@ -29,14 +29,35 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
-  // reset the website body with the new html output
+  let name = variables.name === null ? "Lucy" : variables.name;
+  let lastName = variables.lastName === null ? "Boilett" : variables.lastName;
+  let role = variables.role === null ? "Web Developer" : variables.role;
+  let country = variables.country === null ? "USA" : variables.country;
+  let city = variables.city === null ? "Miami" : variables.city;
+
+  let position =
+    variables.position === "left" ? "position-left" : "position-right";
+
+  let twitterLink = variables.twitter
+    ? `https://twitter.com/${variables.twitter}`
+    : "#";
+  let githubLink = variables.github
+    ? `https://github.com/${variables.github}`
+    : "#";
+  let linkedinLink = variables.linkedin
+    ? `https://linkedin.com/in/${variables.linkedin}`
+    : "#";
+  let instagramLink = variables.instagram
+    ? `https://instagram.com/${variables.instagram}`
+    : "#"; // reset the website body with the new html output
+
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
+          <h1>${name} ${lastName}</h1>
+          <h2>${role}</h2>
+          <h3>${city}, ${country}</h3>
+          <ul class="${position}">
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
             <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
